@@ -1,142 +1,96 @@
+import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
-import { Home } from "lucide-react"
+import { CtaBand, Eyebrow, PageHeader, RatingBadge } from "@/components/blocks"
+import { JsonLd, breadcrumbSchema } from "@/lib/schema"
+import { site } from "@/lib/site"
+
+export const metadata: Metadata = {
+  title: { absolute: "About Hotel Lazeez – Local AC Hotel in Barwala, Hisar" },
+  description:
+    "Hotel Lazeez is a locally owned, fully AC hotel on Hansi Road, Barwala (Hisar). Registered MSME business with restaurant and DJ party hall. Rated 4.8★ by 150+ guests.",
+  alternates: { canonical: "/about" },
+}
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      <section className="bg-primary/10 py-12 px-4 md:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-2 mb-4">
-            <Link href="/" className="flex items-center text-sm text-gray-600 hover:text-primary">
-              <Home className="h-4 w-4 mr-1" />
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-sm">About Us</span>
-          </div>
-          <h1 className="text-4xl font-bold mb-4">About Hotel Lazeez</h1>
-          <p className="text-lg text-gray-700 max-w-2xl">
-            Learn about our story, our mission, and what makes Hotel Lazeez the best hotel in Barwala.
-          </p>
-        </div>
-      </section>
+    <>
+      <JsonLd data={breadcrumbSchema([{ name: "About", path: "/about" }])} />
+      <PageHeader
+        title="About Hotel Lazeez, Barwala"
+        intro="A locally owned hotel built for one simple promise: a clean, cool, safe room in Barwala at a fair price."
+        crumbs={[{ name: "About" }]}
+      />
 
-      {/* Our Story */}
-      <section className="py-16 px-4 md:px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-              <p className="text-gray-700 mb-4">
-                Hotel Lazeez was established with a vision to provide exceptional hospitality services in Barwala. Since
-                our inception, we have been committed to offering comfortable accommodations and personalized service to
-                all our guests.
-              </p>
-              <p className="text-gray-700 mb-4">
-                What started as a small family-run establishment has grown into one of the most respected hotels in the
-                region, known for our attention to detail and commitment to guest satisfaction.
-              </p>
-              <p className="text-gray-700">
-                Today, Hotel Lazeez stands as a symbol of luxury and comfort in Barwala, catering to both business and
-                leisure travelers with our modern amenities and warm hospitality.
-              </p>
-            </div>
-            <div className="relative h-[400px] w-full rounded-lg overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                alt="Hotel Lazeez Building"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Mission */}
-      <section className="py-16 px-4 md:px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-            <p className="text-gray-700 max-w-2xl mx-auto">
-              At Hotel Lazeez, our mission is to provide exceptional hospitality experiences that exceed our guests'
-              expectations.
+      <section className="py-14 md:py-20 px-4">
+        <div className="container mx-auto grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+          <div className="space-y-5 text-slate-600 text-lg">
+            <RatingBadge />
+            <p>
+              Barwala sits on the busy road between Hisar, Hansi, Uklana and Tohana. For years, travellers here had
+              few clean options for a night&apos;s stay. We opened <strong className="text-primary">Hotel Lazeez</strong>{" "}
+              on Hansi Road to fix that.
+            </p>
+            <p>
+              Every room in our building is air-conditioned. We keep prices simple – ₹800, ₹1,000 and ₹1,200 – and
+              we keep rooms clean. That is why more than {site.rating.count} guests have rated us{" "}
+              {site.rating.value} out of 5.
+            </p>
+            <p>
+              Downstairs, the <strong className="text-primary">Lazeez restaurant</strong> serves fresh food, and our{" "}
+              <strong className="text-primary">DJ party hall</strong> hosts birthdays, kitty parties and small family
+              functions for the Barwala community.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Comfort",
-                description:
-                  "We strive to create a comfortable and relaxing environment for all our guests, ensuring they feel at home during their stay.",
-              },
-              {
-                title: "Quality",
-                description:
-                  "We are committed to maintaining the highest standards of quality in our accommodations, services, and amenities.",
-              },
-              {
-                title: "Service",
-                description:
-                  "We believe in providing personalized service that addresses the unique needs and preferences of each guest.",
-              },
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-sm text-center">
-                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
-                <p className="text-gray-700">{item.description}</p>
-              </div>
-            ))}
+          <div className="relative aspect-[3/4] max-h-[600px] overflow-hidden rounded-2xl bg-slate-100">
+            <Image
+              src="/images/lazeez-hotel-barwala-front-day.webp"
+              alt="Hotel Lazeez building on Hansi Road, Barwala, Hisar"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* Our Team */}
-      <section className="py-16 px-4 md:px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
-            <p className="text-gray-700 max-w-2xl mx-auto">
-              Our dedicated team of professionals is committed to making your stay at Hotel Lazeez memorable.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Rajiv Sharma",
-                position: "General Manager",
-                bio: "With over 15 years of experience in the hospitality industry, Rajiv ensures the smooth operation of Hotel Lazeez.",
-              },
-              {
-                name: "Priya Patel",
-                position: "Front Office Manager",
-                bio: "Priya leads our front desk team, ensuring all guests receive a warm welcome and exceptional service throughout their stay.",
-              },
-              {
-                name: "Vikram Singh",
-                position: "Executive Chef",
-                bio: "Chef Vikram brings his culinary expertise to create delicious meals that delight our guests' palates.",
-              },
-              {
-                name: "Anita Verma",
-                position: "Housekeeping Manager",
-                bio: "Anita ensures that all our rooms and facilities are maintained to the highest standards of cleanliness and comfort.",
-              },
-            ].map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="relative h-[200px] w-[200px] mx-auto rounded-full overflow-hidden mb-4">
-                  <Image src="/placeholder.svg?height=200&width=200" alt={member.name} fill className="object-cover" />
-                </div>
-                <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                <p className="text-primary font-medium mb-2">{member.position}</p>
-                <p className="text-gray-700">{member.bio}</p>
-              </div>
-            ))}
-          </div>
+      <section className="py-14 md:py-20 px-4 bg-slate-50">
+        <div className="container mx-auto grid grid-cols-1 gap-6 md:grid-cols-3">
+          {[
+            {
+              t: "Rooms",
+              d: "Three AC room types from ₹800. The ₹1,000 and ₹1,200 rooms add an almirah and more space.",
+            },
+            {
+              t: "Restaurant",
+              d: "In-house kitchen for breakfast, meals and snacks. Order to your room or eat downstairs.",
+            },
+            {
+              t: "Party hall",
+              d: "DJ party hall for birthdays, anniversaries and small get-togethers. Call for availability and packages.",
+            },
+          ].map((c) => (
+            <div key={c.t} className="rounded-2xl bg-white border border-slate-200 p-6">
+              <h2 className="text-xl font-bold text-primary mb-2">{c.t}</h2>
+              <p className="text-slate-600">{c.d}</p>
+            </div>
+          ))}
         </div>
       </section>
-    </div>
+
+      <section className="py-14 md:py-20 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <Eyebrow>Trust & registration</Eyebrow>
+          <h2 className="font-serif text-3xl font-bold text-primary mb-6">A registered local business</h2>
+          <ul className="space-y-3 text-slate-600">
+            <li>Registered enterprise: <strong>Lazeez Hotel</strong> (MSME / Udyam and Haryana Udhyam Memorandum)</li>
+            <li>Activity: Short-term accommodation (NIC 551)</li>
+            <li>GSTIN: {site.gst}</li>
+            <li>Address: {site.addressLine}</li>
+          </ul>
+        </div>
+      </section>
+
+      <CtaBand />
+    </>
   )
 }
-
