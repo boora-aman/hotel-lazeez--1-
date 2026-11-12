@@ -8,6 +8,8 @@ import { site } from "@/lib/site"
 const links = [
   { href: "/", label: "Home" },
   { href: "/rooms", label: "Rooms & Prices" },
+  { href: "/restaurant-in-barwala", label: "Restaurant" },
+  { href: "/party-hall-in-barwala", label: "Party Hall" },
   { href: "/barwala-guide", label: "Barwala Guide" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -24,7 +26,7 @@ export function Navbar() {
           <span className="text-[11px] tracking-wide text-slate-500">Fully AC · Barwala, Hisar</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7" aria-label="Main">
+        <nav className="hidden lg:flex items-center gap-6" aria-label="Main">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-sm font-medium text-slate-700 hover:text-secondary">
               {l.label}
@@ -32,7 +34,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <a href={site.phoneHref} className="flex items-center gap-2 text-sm font-semibold text-primary">
             <Phone className="h-4 w-4" /> {site.phone}
           </a>
@@ -46,7 +48,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="md:hidden p-2 text-primary"
+          className="lg:hidden p-2 text-primary"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -56,7 +58,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1" aria-label="Mobile">
+        <nav className="lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1" aria-label="Mobile">
           {links.map((l) => (
             <Link
               key={l.href}

@@ -51,6 +51,11 @@ export default function BarwalaGuidePage() {
               and serves dozens of surrounding villages, so traders, government staff, wedding guests and families pass
               through every day.
             </p>
+            <p className="mb-4 rounded-xl bg-amber-50 p-4 text-sm">
+              Note: there are other places called Barwala – in Panchkula district (near Chandigarh) and in Gujarat.
+              This guide and Hotel Lazeez are in <strong>Barwala, Hisar district, Haryana (PIN 125121)</strong>.
+              Booking sites sometimes mix them up, so check the PIN code before you book.
+            </p>
             <p>
               Hisar city is about <strong>32 km</strong> away. Many visitors prefer to stay in Barwala itself: hotels
               are cheaper than in Hisar and you skip the daily drive.
@@ -118,7 +123,15 @@ export default function BarwalaGuidePage() {
               <li>Super Deluxe AC Room with almirah (largest) – ₹1,200/night</li>
             </ul>
             <p>
-              Guests rate us {site.rating.value}/5 from {site.rating.count}+ reviews.{" "}
+              We also run the{" "}
+              <Link href="/restaurant-in-barwala" className="font-semibold text-amber-700 hover:underline">
+                Lazeez restaurant
+              </Link>{" "}
+              and a{" "}
+              <Link href="/party-hall-in-barwala" className="font-semibold text-amber-700 hover:underline">
+                DJ party hall in Barwala
+              </Link>
+              . Guests rate us {site.rating.value}/5 from {site.rating.count}+ reviews.{" "}
               <Link href="/rooms" className="font-semibold text-amber-700 hover:underline">
                 See rooms & prices →
               </Link>

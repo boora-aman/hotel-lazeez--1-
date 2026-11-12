@@ -27,6 +27,11 @@ export function hotelSchema() {
       addressCountry: site.address.country,
     },
     hasMap: site.directionsHref,
+    containsPlace: [
+      { "@type": "Restaurant", name: "Lazeez Restaurant", url: `${site.url}/restaurant-in-barwala` },
+      { "@type": "EventVenue", name: "Lazeez DJ Party Hall", url: `${site.url}/party-hall-in-barwala` },
+    ],
+    ...(site.reviewsHref ? { sameAs: [site.reviewsHref] } : {}),
     areaServed: ["Barwala", "Hisar", "Hansi", "Uklana", "Agroha", "Haryana"],
     aggregateRating: {
       "@type": "AggregateRating",
@@ -48,7 +53,7 @@ export function hotelSchema() {
       name: r.name,
       price: r.price,
       priceCurrency: "INR",
-      url: `${site.url}/rooms#${r.slug}`,
+      url: `${site.url}/rooms/${r.slug}`,
       itemOffered: {
         "@type": "HotelRoom",
         name: r.name,
@@ -61,6 +66,19 @@ export function hotelSchema() {
         })),
       },
     })),
+  }
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    url: site.url,
+    name: "Hotel Lazeez Barwala",
+    alternateName: ["Lazeez Hotel", "Hotel Lazeez"],
+    inLanguage: ["en-IN", "hi-IN"],
+    publisher: { "@id": `${site.url}/#hotel` },
   }
 }
 

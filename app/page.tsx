@@ -236,6 +236,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* More at Lazeez */}
+      <section className="py-16 md:py-20 px-4 bg-slate-50">
+        <div className="container mx-auto grid gap-6 md:grid-cols-2">
+          <Link href="/restaurant-in-barwala" className="group rounded-2xl border border-slate-200 bg-white p-8 hover:shadow-md">
+            <UtensilsCrossed className="h-8 w-8 text-secondary mb-3" />
+            <h2 className="text-2xl font-bold text-primary mb-2 group-hover:underline">Lazeez Restaurant in Barwala</h2>
+            <p className="text-slate-600">Snacks, pizza, burgers and meals on the ground floor, plus room service for hotel guests.</p>
+          </Link>
+          <Link href="/party-hall-in-barwala" className="group rounded-2xl border border-slate-200 bg-white p-8 hover:shadow-md">
+            <Sparkles className="h-8 w-8 text-secondary mb-3" />
+            <h2 className="text-2xl font-bold text-primary mb-2 group-hover:underline">DJ Party Hall in Barwala</h2>
+            <p className="text-slate-600">Birthdays, kitty parties and family functions – with food and AC rooms for your guests.</p>
+          </Link>
+        </div>
+      </section>
+
+      {/* Hindi */}
+      <section lang="hi" className="py-16 md:py-20 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="font-serif text-3xl font-bold text-primary mb-4">बरवाला (हिसार) में AC होटल – ₹800 से</h2>
+          <p className="text-slate-700 text-lg mb-4">
+            होटल लज़ीज़, हांसी रोड, बरवाला में एक साफ़-सुथरा और सुरक्षित होटल है। हमारे सभी कमरे AC हैं। कमरों का किराया
+            सिर्फ़ ₹800, ₹1,000 और ₹1,200 प्रति रात है। ₹1,000 और ₹1,200 वाले कमरों में अलमारी भी मिलती है।
+          </p>
+          <p className="text-slate-700 text-lg mb-6">
+            होटल में रेस्टोरेंट और DJ पार्टी हॉल भी है। 150 से ज़्यादा मेहमानों ने हमें 4.8★ रेटिंग दी है। बुकिंग के लिए कॉल
+            या WhatsApp करें:{" "}
+            <a href={site.phoneHref} className="font-semibold text-amber-700">
+              {site.phone}
+            </a>
+          </p>
+          <p className="text-slate-500">पता: शॉप नं. 202-203, ताज कॉलोनी, बजाज फाइनेंस के पास, हांसी रोड, बरवाला, हिसार, हरियाणा 125121</p>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-16 md:py-24 px-4 bg-slate-50">
         <div className="container mx-auto max-w-3xl">

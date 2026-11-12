@@ -84,7 +84,11 @@ export function RoomCard({ room, headingLevel = "h3" }: { room: Room; headingLev
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-baseline justify-between gap-3 mb-1">
-          <H className="text-xl font-bold text-primary">{room.name}</H>
+          <H className="text-xl font-bold text-primary">
+            <Link href={`/rooms/${room.slug}`} className="hover:underline">
+              {room.name}
+            </Link>
+          </H>
           <p className="whitespace-nowrap text-2xl font-bold text-primary">
             ₹{room.price.toLocaleString("en-IN")}
             <span className="text-sm font-normal text-slate-500">/night</span>
@@ -140,7 +144,7 @@ export function PriceTable() {
           {rooms.map((r) => (
             <tr key={r.slug} className="border-t border-slate-200">
               <td className="p-4 font-medium text-primary">
-                <Link href={`/rooms#${r.slug}`} className="hover:underline">
+                <Link href={`/rooms/${r.slug}`} className="hover:underline">
                   {r.name}
                 </Link>
               </td>

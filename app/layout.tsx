@@ -4,7 +4,7 @@ import { Inter, Playfair_Display } from "next/font/google"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MobileActionBar } from "@/components/mobile-action-bar"
-import { JsonLd, hotelSchema } from "@/lib/schema"
+import { JsonLd, hotelSchema, websiteSchema } from "@/lib/schema"
 import { site } from "@/lib/site"
 import "./globals.css"
 
@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Hotel Lazeez – Best AC Hotel in Barwala, Hisar | Rooms from ₹800",
+    default: "Hotel in Barwala, Hisar – Hotel Lazeez | AC Rooms from ₹800",
     template: "%s | Hotel Lazeez Barwala",
   },
   description:
@@ -35,6 +35,8 @@ export const metadata: Metadata = {
     "hotel near Hisar",
     "hotel on Hansi Road Barwala",
     "Lazeez Hotel",
+    "बरवाला में होटल",
+    "बरवाला होटल",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: site.url,
     siteName: site.name,
-    title: "Hotel Lazeez – AC Hotel in Barwala, Hisar | Rooms ₹800–₹1200",
+    title: "Hotel in Barwala, Hisar – Hotel Lazeez | AC Rooms ₹800–₹1200",
     description: "Fully AC rooms on Hansi Road, Barwala. 4.8★ from 150+ guests. Call or WhatsApp 91291 91900.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Lazeez Hotel Barwala – fully AC rooms" }],
   },
@@ -50,6 +52,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, "max-image-preview": "large" },
   formatDetection: { telephone: true },
   other: { "geo.region": "IN-HR", "geo.placename": "Barwala, Hisar" },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION } : undefined,
+  },
 }
 
 export const viewport: Viewport = {
@@ -63,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-IN" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased bg-white text-slate-800 pb-16 md:pb-0">
         <JsonLd data={hotelSchema()} />
+        <JsonLd data={websiteSchema()} />
         <Navbar />
         <main>{children}</main>
         <Footer />

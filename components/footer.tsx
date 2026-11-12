@@ -22,7 +22,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             {rooms.map((r) => (
               <li key={r.slug}>
-                <Link href={`/rooms#${r.slug}`} className="text-white/70 hover:text-white">
+                <Link href={`/rooms/${r.slug}`} className="text-white/70 hover:text-white">
                   {r.name} – ₹{r.price.toLocaleString("en-IN")}/night
                 </Link>
               </li>
@@ -35,7 +35,9 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             {[
               ["/rooms", "Rooms & Prices"],
-              ["/barwala-guide", "Barwala Travel Guide"],
+              ["/restaurant-in-barwala", "Restaurant in Barwala"],
+              ["/party-hall-in-barwala", "Party Hall in Barwala"],
+              ["/barwala-guide", "Hotels in Barwala – Guide"],
               ["/about", "About Hotel Lazeez"],
               ["/contact", "Contact & Directions"],
               ["/booking", "Book a Room"],
